@@ -38,6 +38,8 @@
 
 @end
 
+typedef void (^ShareCompleteBlock)(NSString *activityType);
+
 @interface MWPhotoBrowser : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, weak) IBOutlet id<MWPhotoBrowserDelegate> delegate;
@@ -52,6 +54,9 @@
 @property (nonatomic) BOOL autoPlayOnAppear;
 @property (nonatomic) NSUInteger delayToHideElements;
 @property (nonatomic, readonly) NSUInteger currentIndex;
+
+// Share
+@property (nonatomic, copy) ShareCompleteBlock shareCompleteBlock;
 
 // Customise image selection icons as they are the only icons with a colour tint
 // Icon should be located in the app's main bundle
@@ -71,5 +76,7 @@
 // Navigation
 - (void)showNextPhotoAnimated:(BOOL)animated;
 - (void)showPreviousPhotoAnimated:(BOOL)animated;
+
+-(void)onShareCompleted:(ShareCompleteBlock)shareCompleteBlock;
 
 @end

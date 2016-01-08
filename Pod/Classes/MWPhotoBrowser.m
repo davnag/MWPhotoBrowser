@@ -130,6 +130,13 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 	
 }
 
+#pragma mark Share
+
+-(void)onShareCompleted:(ShareCompleteBlock)shareCompleteBlock {
+    _shareCompleteBlock = nil;
+    _shareCompleteBlock  = [shareCompleteBlock copy];
+}
+
 #pragma mark - View Loading
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -1584,6 +1591,11 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
             // Show
             typeof(self) __weak weakSelf = self;
             [self.activityViewController setCompletionHandler:^(NSString *activityType, BOOL completed) {
+                if (completed) {
+                    if (weakSelf.shareCompleteBlock) {
+                        weakSelf.shareCompleteBlock(activityType);
+                    }
+                }
                 weakSelf.activityViewController = nil;
                 [weakSelf hideControlsAfterDelay];
                 [weakSelf hideProgressHUD:YES];
