@@ -73,6 +73,8 @@ typedef void (^ShareCompleteBlock)(NSString *activityType);
 - (void)updateNavigation;
 - (void)updateVisiblePageStates;
 
+- (void)updateGridSelections;
+
 // Set page that photo browser starts on
 - (void)setCurrentPhotoIndex:(NSUInteger)index;
 

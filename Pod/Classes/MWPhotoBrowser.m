@@ -860,6 +860,13 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 	
 }
 
+- (void)updateGridSelections {
+    //  Update grid if it's presented
+    if (_gridController) {
+        [_gridController.collectionView reloadData];
+    }
+}
+
 - (void)updateVisiblePageStates {
     NSSet *copy = [_visiblePages copy];
     for (MWZoomingScrollView *page in copy) {
