@@ -70,6 +70,9 @@ typedef void (^ShareCompleteBlock)(NSString *activityType);
 // Reloads the photo browser and refetches data
 - (void)reloadData;
 
+- (void)updateNavigation;
+- (void)updateVisiblePageStates;
+
 // Set page that photo browser starts on
 - (void)setCurrentPhotoIndex:(NSUInteger)index;
 
